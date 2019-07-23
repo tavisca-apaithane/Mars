@@ -12,76 +12,15 @@ public class MarsRoboRover {
         x = Integer.valueOf(positions[0]);
         y = Integer.valueOf(positions[1]);
         dir = positions[2];
+
         Rover rover = new Rover(x,y,dir);
+
         for (char command : commands.toCharArray()) {
-            switch (command)
-            {
-                case 'M': rover.move(rover.p.directions.get(rover.p.pointer));
-                    break;
-                case 'L': rover.goLeft();
-                    break;
-                case 'R': rover.goRight();
-                    break;
-            }
+            rover.rove(command);
         }
 
         System.out.println("currentPosition..." + currentPosition);
         System.out.println("commands..." + commands);
-        System.out.println("newPosition..." + rover.p.finalX + " " + rover.p.finalY + " " + rover.p.directions.get(rover.p.pointer));
+        System.out.println("newPosition..." + rover.getPosition() );
     }
-/*
-	private static void rove(char command) {
-		if (dir.equalsIgnoreCase("N")) {
-			switch (command) {
-			case 'L':
-				dir = "W";
-				break;
-			case 'R':
-				dir = "E";
-				break;
-			case 'M':
-				y++;
-				break;
-			}
-		} else if (dir.equalsIgnoreCase("E")) {
-			switch (command) {
-			case 'L':
-				dir = "N";
-				break;
-			case 'R':
-				dir = "S";
-				break;
-			case 'M':
-				x++;
-				break;
-			}
-		} else if (dir.equalsIgnoreCase("S")) {
-			switch (command) {
-			case 'L':
-				dir = "E";
-				break;
-			case 'R':
-				dir = "W";
-				break;
-			case 'M':
-				y--;
-				break;
-			}
-		} else if (dir.equalsIgnoreCase("W")) {
-			switch (command) {
-			case 'L':
-				dir = "S";
-				break;
-			case 'R':
-				dir = "N";
-				break;
-			case 'M':
-				x--;
-				break;
-			}
-		}
-	}
-
- */
-
 }

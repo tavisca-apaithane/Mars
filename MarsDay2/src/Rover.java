@@ -1,26 +1,44 @@
 public class Rover {
-    public Position p=null;
+    private Position p=null;
+
     public Rover(int x, int y, String dir)
     {
         p=new Position();
-        p.pointer = p.directions.indexOf(dir);
+        p.direction=dir;
         p.finalX=x;
         p.finalY=y;
     }
 
-    public void goLeft()
+    public String getPosition()
     {
-        if(p.pointer==0) p.pointer=3;
-        else p.pointer=p.pointer-1;
+        return p.finalX + " " + p.finalY + " " + p.direction;
     }
 
-    public void goRight()
+    private void turnLeft()
     {
-        if(p.pointer==3) p.pointer=0;
-        else p.pointer=p.pointer+1;
+        if(p.direction.equalsIgnoreCase("N"))
+            p.direction="W";
+        else if(p.direction.equalsIgnoreCase("S"))
+            p.direction="E";
+        else if(p.direction.equalsIgnoreCase("E"))
+            p.direction="N";
+        else if(p.direction.equalsIgnoreCase("W"))
+            p.direction="S";
     }
 
-    public void move(String dir)
+    private void turnRight()
+    {
+        if(p.direction.equalsIgnoreCase("N"))
+            p.direction="E";
+        else if(p.direction.equalsIgnoreCase("S"))
+            p.direction="W";
+        else if(p.direction.equalsIgnoreCase("E"))
+            p.direction="S";
+        else if(p.direction.equalsIgnoreCase("W"))
+            p.direction="N";
+    }
+
+    private void move(String dir)
     {
         switch (dir) {
             case "N":
@@ -34,6 +52,18 @@ public class Rover {
                 break;
             case "W":
                 p.finalX--;
+                break;
+        }
+    }
+    public void rove(char command)
+    {
+        switch (command)
+        {
+            case 'M': this.move(p.direction);
+                break;
+            case 'L': this.turnLeft();
+                break;
+            case 'R': this.turnRight();
                 break;
         }
     }
