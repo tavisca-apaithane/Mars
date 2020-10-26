@@ -22,5 +22,10 @@ public class MarsRoboRover {
         System.out.println("currentPosition..." + currentPosition);
         System.out.println("commands..." + commands);
         System.out.println("newPosition..." + rover.getPosition() );
+
+
+
+
+//test change
     }
 }
